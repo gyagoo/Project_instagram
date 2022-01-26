@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,40 +12,37 @@
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 </head>
 <body>
-	<div id="wrap" class="bg-info">
-		<c:import url="/WEB-INF/jsp/include/header.jsp" />
+	<div id="wrap">
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
 		<section class="content d-flex justify-content-center mt-3">
-			<div class="join-box my-5">
-				<form id="signupForm">
-					<div class="display-4">회원가입</div>
+			<div class="login-box my-5">
+				<form id="loginForm">
+					<div class="display-4 text-center">로그인</div>
 					<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
 					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">
-					<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordConfirmInput" name="passwordConfirm">
-					<input type="text" class="form-control mt-3" placeholder="이름" id="nameInput" name="name">
-					<input type="text" class="form-control mt-3" placeholder="이메일" id="emailInput" name="email">
 					
-					<button type="submit" class="btn btn-primary btn-block mt-3">Join</button> 
+					<div class="d-flex justify-content-center">
+						<button type="submit" class="btn btn-primary mt-3 btn-block">LogIn</button>
+					</div>
 				</form>
 			</div>
 		</section>
 		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	
 	<script>
 		$(document).ready(function() {
-			$("#signupForm").on("submit", function(e) {
+			
+			$("#loginForm").on("submit", function(e) {
 				e.preventDefault();
 				
 				var loginId = $("#loginIdInput").val();
 				var password = $("#passwordInput").val();
-				var passwordConfirm	= $("#passwordConfirmInput").val();
-				var name = $("#nameInput").val();
-				var email = $("#emailInput").val();
 				
 				if(loginId == "") {
 					alert("아이디를 입력하세요");
@@ -55,36 +52,25 @@
 					alert("비밀번호를 입력하세요");
 					return;
 				}
-				if(passwordConfirm != password) {
-					alert("비밀번호가 일치하지 않습니다");
-					return;
-				}
-				if(name == "") {
-					alert("이름을 입력하세요");
-					return;
-				}
-				if(email == "") {						// 나중에 email@address 형태로 바꾸기
-					alert("이메일을 입력하세요");
-					return;
-				}
 				
 				$.ajax({
 					type: "post",
-					url: "/user/sign_up",
-					data: {"loginId":loginId, "password":password, "passwordConfirm":passwordConfirm, "name":name, "email":email},
+					url: "/user/sign_in",
+					data: {"loginId":loginId, "password":password},
 					success: function(data) {
 						if(data.result == "success") {
-							alert("회원가입을 환영합니다*^^*");
-							location.href="/user/signin_view";
+							location.href="/post/feed_view";
 						} else {
-							alert("회원가입에 실패하셨습니다");
+							alert("아이디와 비밀번호를 확인하세요");
 						}
 					},
 					error: function() {
 						alert("error");
+						
 					}
 				});
-			});
+			})
+			
 		});
 	</script>
 </body>
