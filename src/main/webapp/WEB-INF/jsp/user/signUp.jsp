@@ -18,11 +18,14 @@
 	<div id="wrap" class="bg-info">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="content d-flex justify-content-center mt-3">
+		<section class="content d-flex justify-content-center">
 			<div class="join-box my-5">
 				<form id="signupForm">
 					<div class="display-4">회원가입</div>
-					<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
+					<div class="d-flex">
+						<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
+						<button type="button" id="isDuplicateBtn" class="form-control btn btn-primary col-3 ml-2 mt-3">중복</button>
+					</div>
 					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">
 					<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordConfirmInput" name="passwordConfirm">
 					<input type="text" class="form-control mt-3" placeholder="이름" id="nameInput" name="name">
@@ -38,6 +41,39 @@
 	
 	<script>
 		$(document).ready(function() {
+			
+			var isDuplicateCheck = false;
+			
+			$("#isDuplicateBtn").on("click", function() {
+				var loginId = $("#loginIdInput").val();
+				
+				if(loginId == "") {
+					alert("아이디를 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type: "post",
+					url: "/user/is_duplicate_id",
+					data: {"loginId":loginId},
+					success: function(data) {
+						if(data.result) {
+							alert("사용 가능한 아이디입니다");
+							isDuplicateCheck = true;
+						} else {
+							alert("중복된 아이디입니다");
+							isDuplicateCheck = false;
+						}
+					},
+					error: function() {
+						alert("error\ntry again !")
+					}
+				});
+			});
+			
+			// 아이디 수정을 시도하면 중복 체크가 초기화 되도록
+			// $("#loginInput").
+			
 			$("#signupForm").on("submit", function(e) {
 				e.preventDefault();
 				
@@ -47,6 +83,10 @@
 				var name = $("#nameInput").val();
 				var email = $("#emailInput").val();
 				
+				if(isDuplicateCheck == false) {
+					alert("아이디 중복체크를 하세요");
+					return;
+				}
 				if(loginId == "") {
 					alert("아이디를 입력하세요");
 					return;
@@ -67,6 +107,7 @@
 					alert("이메일을 입력하세요");
 					return;
 				}
+
 				
 				$.ajax({
 					type: "post",
@@ -85,6 +126,8 @@
 					}
 				});
 			});
+			
+
 		});
 	</script>
 </body>

@@ -24,6 +24,16 @@
  		)
  	</insert>
  	
+ 	<!-- 중복 -->
+ 	<select id="selectCountLoginId" resultType="int" parameterType="string">
+ 		SELECT
+ 			count(*)
+ 		FROM 
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 	</select>
+ 	
  	<select id="selectUser" resultType="com.project.instagram.user.model.User">
  		SELECT
  			`id`

@@ -18,15 +18,14 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="content d-flex justify-content-center mt-3">
-			<div class="login-box my-5">
+		<section class="content d-flex justify-content-center">
+			<div class="login-box my-5 d-flex align-items-center">
 				<form id="loginForm">
 					<div class="display-4 text-center">로그인</div>
 					<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
-					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">
-					
+					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">				
 					<div class="d-flex justify-content-center">
-						<button type="submit" class="btn btn-primary mt-3 btn-block">LogIn</button>
+						<button type="submit" class="btn btn-primary my-3 btn-block">LogIn</button>
 					</div>
 				</form>
 			</div>

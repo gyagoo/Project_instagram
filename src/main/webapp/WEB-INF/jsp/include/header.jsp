@@ -4,8 +4,8 @@
 
     
 		<header>
-			<div id="logo" class="d-flex justify-content-between">
-				<div>
+			<div class="d-flex justify-content-between">
+				<div id="logo" >
 					<img src="/static/images/logo.png" class="mb-4 ml-3" width="50px" alt="logo">
 					<label class="display-4">instagram</label>				
 				</div>
@@ -20,11 +20,14 @@
 											${userLoginId }님
 										</div>
 										<div id="onlineCircle">
-											<img src="/static/images/online_circle.png" width="10" alt="online"> <label>접속중</label>
+											<img src="/static/images/online_circle.png" width="10px" alt="online"> <label>접속중</label>
 										</div>							
 									</div>
+									<div class="profileImage">
+										<img src="/static/images/user.png" class="ml-2 mr-5" width="50px" alt="profileImage" >
+									</div>
 									<div id="online">
-										<button type="button" class="btn btn-primary mx-3 mt-1" id="logoutBtn" onclick="location.href='/user/sign_out'">logout</button>
+										<button type="button" class="btn btn-primary ml-5 mr-3 mt-1" id="logoutBtn" onclick="location.href='/user/sign_out'">logout</button>
 									</div>
 								</div>								
 							</c:when>

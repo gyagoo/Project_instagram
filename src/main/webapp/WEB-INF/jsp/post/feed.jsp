@@ -19,7 +19,7 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
-		<section class="content d-flex justify-content-center mt-3">
+		<section class="content d-flex justify-content-center">
 			
 		</section>
 		
