@@ -14,24 +14,29 @@
 					<div>
 						<c:choose>
 							<c:when test="${not empty userId }">
-								<div>
-									${userLoginId }님
-								</div>
-								<div id="onlineCircle">
-									<img src="/static/images/online_circle.png" width="10" alt="online"> <label>접속중</label>
-								</div>
+								<div class="d-flex">
+									<div>
+										<div>
+											${userLoginId }님
+										</div>
+										<div id="onlineCircle">
+											<img src="/static/images/online_circle.png" width="10" alt="online"> <label>접속중</label>
+										</div>							
+									</div>
+									<div id="online">
+										<button type="button" class="btn btn-primary mx-3 mt-1" id="logoutBtn">logout</button>
+									</div>
+								</div>								
 							</c:when>
+							<c:otherwise>
+								<div id="offline">
+									<button type="button" class="btn btn-primary mx-2 mt-2" id="loginBtn" onclick="location.href='/user/signin_view'">로그인</button>
+									<button type="button" class="btn btn-primary mt-2" id="signupBtn" onclick="location.href='/user/signup_view'">회원가입</button>			
+								</div>								
+							</c:otherwise>
 						</c:choose>							
-					</div>
-					<!-- 여기부터 -->
-					<div id="offline">
-						<button type="button" class="btn btn-primary mx-2 mt-2" id="loginBtn" onclick="location.href='/user/signin_view'">로그인</button>
-						<button type="button" class="btn btn-primary mt-2" id="signupBtn" onclick="location.href='/user/signup_view'">회원가입</button>			
-					</div>
-					
-					<div id="online" class="d-none">
-						<button type="button" class="btn btn-primary" id="logoutBtn" onclick="location.href='/user/signin_view'">logout</button>
 					</div>
 				</div>
 			</div>
 		</header>
+	
