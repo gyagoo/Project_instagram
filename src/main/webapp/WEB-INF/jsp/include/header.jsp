@@ -24,7 +24,7 @@
 										</div>							
 									</div>
 									<div id="online">
-										<button type="button" class="btn btn-primary mx-3 mt-1" id="logoutBtn">logout</button>
+										<button type="button" class="btn btn-primary mx-3 mt-1" id="logoutBtn" onclick="location.href='/user/sign_out'">logout</button>
 									</div>
 								</div>								
 							</c:when>
