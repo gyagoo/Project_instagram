@@ -24,7 +24,7 @@
 					<div class="display-4">회원가입</div>
 					<div class="d-flex">
 						<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
-						<button type="button" id="isDuplicateBtn" class="form-control btn btn-primary col-3 ml-2 mt-3">중복</button>
+						<button type="button" id="isDuplicateBtn" class="form-control btn btn-primary col-3 ml-2 mt-3" aria-pressed="false">중복</button>
 					</div>
 					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">
 					<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordConfirmInput" name="passwordConfirm">
@@ -52,17 +52,21 @@
 					return;
 				}
 				
+				
+				
 				$.ajax({
 					type: "post",
 					url: "/user/is_duplicate_id",
 					data: {"loginId":loginId},
 					success: function(data) {
 						if(data.result) {
-							alert("사용 가능한 아이디입니다");
+							alert("중복된 아이디입니다");
 							isDuplicateCheck = true;
 						} else {
-							alert("중복된 아이디입니다");
+							alert("사용 가능한 아이디입니다");
 							isDuplicateCheck = false;
+							$("#isDuplicateBtn").addClass("active");	// 중복확인이 됐으면 색이 진하게 변하도록 설정
+							return;
 						}
 					},
 					error: function() {

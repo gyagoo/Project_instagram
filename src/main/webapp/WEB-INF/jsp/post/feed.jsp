@@ -16,14 +16,26 @@
 <title>피드</title>
 </head>
 <body>
-	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		
-		<section class="content d-flex justify-content-center">
-			
-		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+<div id="wrap">
+		<div class="container">
+			<div class="container">
+			  <div class="row">
+			  	<c:forEach var="image" itemt="${profileImages }">
+				    <div class="col-sm">
+				      <img src="${image.profileImages }">
+				    </div>
+			    </c:forEach>
+			    
+			    
+			    <div class="col-sm">
+			      One of three columns
+			    </div>
+			    <div class="col-sm">
+			      One of three columns
+			    </div>
+			  </div>
+			</div>
+		</div>	
 	</div>
 </body>
 </html>
