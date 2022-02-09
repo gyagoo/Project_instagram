@@ -7,7 +7,6 @@
  		INSERT INTO `post`
  		(
  			`userId`
- 			,	`subject`
  			,	`content`
  			,	`createdAt`
  			,	`updatedAt`
@@ -15,7 +14,6 @@
  		VALUES
  		(
  			#{userId}
- 			,	#{subject}
  			,	#{content}
  			,	now()	
  			,	now()

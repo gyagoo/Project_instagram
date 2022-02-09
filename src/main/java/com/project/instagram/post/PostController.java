@@ -12,4 +12,9 @@ public class PostController {
 	public String feedView() {
 		return "post/feed";
 	}
+	
+	@GetMapping("/create_view")
+	public String createView() {
+		return "post/createView";
+	}
 }

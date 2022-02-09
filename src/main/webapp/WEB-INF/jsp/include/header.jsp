@@ -6,8 +6,10 @@
 		<header>
 			<div class="d-flex justify-content-between">
 				<div id="logo" >
-					<img src="/static/images/logo.png" class="mb-4 ml-3" width="50px" alt="logo">
-					<label class="display-4">instagram</label>				
+					<a href="/user/signin_view">
+						<img src="/static/images/logo.png" class="mb-4 ml-3" width="50px" alt="logo">
+						<label class="display-4">instagram</label>
+					</a>					
 				</div>
 
 				<div class="button p-3 d-flex">
@@ -24,10 +26,11 @@
 										</div>							
 									</div>
 									<div class="profileImage">
-										<img src="/static/images/user.png" class="ml-2 mr-5" width="50px" alt="profileImage" >
+										<img src="/static/images/user.png" class="ml-2 mr-4" width="50px" alt="profileImage" >
 									</div>
 									<div id="online">
-										<button type="button" class="btn btn-primary ml-5 mr-3 mt-1" id="logoutBtn" onclick="location.href='/user/sign_out'">logout</button>
+										<button type="button" class="btn btn-primary mt-2 ml-4 mr-2" id="editBtn" onclick="location.href='/user/edit_view'">edit</button>
+										<button type="button" class="btn btn-primary mt-2" id="logoutBtn" onclick="location.href='/user/sign_out'">logout</button>
 									</div>
 								</div>								
 							</c:when>

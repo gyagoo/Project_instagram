@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 	
-	@GetMapping("/main")
-	public String mainView() {
-		return "user/main";
-	}
 	// 회원가입
 	@GetMapping("/signup_view")
 	public String signupView() {
@@ -35,4 +31,10 @@ public class UserController {
 		
 		return "redirect:/user/signin_view";
 	}
+	
+	@GetMapping("/edit_view")
+	public String editView() {
+		return "/user/editView";		
+	}
+
 }

@@ -16,22 +16,60 @@
 </head>
 <body>
 	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		
-		<section class="content d-flex justify-content-center">
-			<div class="login-box my-5 d-flex align-items-center">
-				<form id="loginForm">
-					<div class="display-4 text-center">로그인</div>
-					<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
-					<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">				
-					<div class="d-flex justify-content-center">
-						<button type="submit" class="btn btn-primary my-3 btn-block">LogIn</button>
+		<div class="container-lg">
+			<header>
+				<div class="d-flex justify-content-between">
+					<div id="logo" >
+						<img src="/static/images/logo.png" class="mb-4 ml-3" width="50px" alt="logo">
+						<label class="display-4">instagram</label>				
 					</div>
-				</form>
-			</div>
-		</section>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+	
+				</div>
+			</header>
+			
+			<section class="d-flex">
+				<div class="div-left w-50 d-flex justify-content-end">
+					<img src="/static/images/cellphonewithpic.png" width="380px">
+				</div>
+				<%-- 로그인 상태일 경우 프로필 화면 --%>
+				<c:choose>
+					<c:when test="${not empty userId }">	<%-- 로그인 상태 --%>
+						<div class="d-flex justify-content-center align-items-center bg-white div-right rounded">
+							<div>
+								<div class="d-flex justify-content-center">
+									<div><img src="/static/images/user.png" width="150px" class="mt-5"></div>
+								</div>
+								<div class="display-5 d-flex justify-content-center mt-3">${userLoginId }님</div>
+								<div class="d-flex justify-content-center mt-3">
+									<a href="/user/sign_out">로그아웃</a>
+								</div>
+							</div>	
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="div-right mt-5">
+							<%-- login --%>
+							<div id="div-login" class="login-box d-flex align-item-start justify-content-center mt-5 p-3 bg-white rounded">
+								<form id="loginForm">
+									<div class="display-4 text-center">로그인</div>
+									<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput" name="loginId">
+									<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput" name="password">				
+									<div class="d-flex justify-content-center">
+										<button type="submit" class="btn btn-primary my-3 btn-block">LogIn</button>
+									</div>
+								</form>
+							</div>
+							<div class="text-center bg-info mt-3 align-item-end bg-white p-3 rounded">
+								계정이 없으신가요?<a href="/user/signup_view" class="text-primary"> 가입하기</a>
+							</div>					
+						</div>						
+					</c:otherwise>
+				</c:choose>
+			</section>
+	
+			
+			<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+		</div>	
 	</div>
 	
 	<script>
@@ -68,7 +106,7 @@
 						
 					}
 				});
-			})
+			});
 			
 		});
 	</script>
